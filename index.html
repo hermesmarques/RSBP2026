@@ -132,35 +132,6 @@ div.csl-indent {
   }
 }</script>
 
-  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js" type="text/javascript"></script>
-
-<script type="text/javascript">
-const typesetMath = (el) => {
-  if (window.MathJax) {
-    // MathJax Typeset
-    window.MathJax.typeset([el]);
-  } else if (window.katex) {
-    // KaTeX Render
-    var mathElements = el.getElementsByClassName("math");
-    var macros = [];
-    for (var i = 0; i < mathElements.length; i++) {
-      var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
-        window.katex.render(texText.data, mathElements[i], {
-          displayMode: mathElements[i].classList.contains('display'),
-          throwOnError: false,
-          macros: macros,
-          fleqn: false
-        });
-      }
-    }
-  }
-}
-window.Quarto = {
-  typesetMath
-};
-</script>
 
 </head>
 
@@ -320,8 +291,8 @@ window.Quarto = {
 <h2 class="anchored" data-anchor-id="objetivos">Objetivos</h2>
 <p>Ao final deste programa, você será capaz de:</p>
 <ul>
-<li><strong>Manipular</strong> bancos de dados complexos (escalas Likert, dados longitudinais) sem abrir planilhas eletrônicas.</li>
-<li><strong>Automatizar</strong> a inversão de itens e o cálculo de escores globais e consistência interna (<span class="math inline">\(\alpha\)</span> de Cronbach).</li>
+<li><strong>Manipular</strong> bancos de dados (escalas, dados longitudinais, etc) sem abrir planilhas eletrônicas.</li>
+<li><strong>Escrever</strong> manuscritos em Quarto seguindo as diretrizes APA 7.</li>
 <li><strong>Construir</strong> gráficos (com barras de erro e intervalos de confiança) dentro do padrão APA exigido por periódicos da área de psicologia.</li>
 <li><strong>Gerar</strong> tabelas inferenciais (testes <em>t</em>, ANOVAs, Regressões) diretamente no padrão visual da APA 7.</li>
 <li><strong>Vincular</strong> seu gerenciador de referências bibliográficas (Zotero) para compilar citações de forma nativa e sem erros de formatação.</li>
