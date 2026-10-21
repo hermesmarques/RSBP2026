@@ -1,0 +1,262 @@
+[
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Introdução à análise de dados em Psicologia com R",
+    "section": "",
+    "text": "Introdução\nA crise de replicabilidade tem sido amplamente debatida na área (Open Science Collaboration, 2015).\nA crise de reprodutibilidade nas ciências sociais e do comportamento impôs uma nova realidade: o desenho de pesquisa moderno exige total transparência no tratamento e análise de dados. Este curso oferece uma imersão prática na linguagem R, utilizando a filosofia do tidyverse, um breve introdução aos relatórios dinâmicos do Quarto, e a extensão apaquarto para gerar artigos prontos para submissão.",
+    "crumbs": [
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Introdução</span>"
+    ]
+  },
+  {
+    "objectID": "index.html#objetivos",
+    "href": "index.html#objetivos",
+    "title": "Introdução à análise de dados em Psicologia com R",
+    "section": "Objetivos",
+    "text": "Objetivos\nAo final deste programa, você será capaz de:\n\nManipular bancos de dados complexos (escalas Likert, dados longitudinais) sem abrir planilhas eletrônicas.\nAutomatizar a inversão de itens e o cálculo de escores globais e consistência interna (\\(\\alpha\\) de Cronbach).\nConstruir gráficos (com barras de erro e intervalos de confiança) dentro do padrão APA exigido por periódicos da área de psicologia.\nGerar tabelas inferenciais (testes t, ANOVAs, Regressões) diretamente no padrão visual da APA 7.\nVincular seu gerenciador de referências bibliográficas (Zotero) para compilar citações de forma nativa e sem erros de formatação.",
+    "crumbs": [
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Introdução</span>"
+    ]
+  },
+  {
+    "objectID": "01-tidyverse.html",
+    "href": "01-tidyverse.html",
+    "title": "Fundamentos da linguagem R para Psicologia",
+    "section": "",
+    "text": "As armadilhas do fluxo de trabalho tradicional (“point and click”)\nA dependência de softwares estatísticos operados por interface gráfica tradicional (onde o pesquisador clica em menus para gerar análises) introduz três possíveis vulnerabilidades metodológicas:\ngraph LR\n    %% Configuração de Estilo Visual (Alerta & Tradicional)\n    classDef default fill:#f9f9fb,stroke:#333,stroke-width:1.5px,font-family:sans-serif,font-size:13px;\n    classDef titulo fill:#C00000,stroke:#A00000,stroke-width:2px,color:#fff,font-weight:bold,font-size:15px;\n    classDef nota fill:none,stroke:#7F7F7F,stroke-width:1px,stroke-dasharray: 5 5,font-style:italic,color:#595959;\n\n    %% Elementos do Fluxo\n    T(\"FLUXO TRADICIONAL &lt;br&gt; Suscetível a Erros e Não Reprodutível\"):::titulo\n    \n    A(\"Banco Bruto &lt;br&gt; (Excel / SPSS)\")\n    B(\"Manipulação &lt;br&gt; Manual\")\n    C(\"Copiar &lt;br&gt; Saídas\")\n    D(\"Colar no &lt;br&gt; Word\")\n    \n    N(\"(Perda de Rastreabilidade)\"):::nota\n\n    %% Conexões e Direcionamentos\n    T --&gt; A\n    A --&gt; B\n    B --&gt; C\n    C --&gt; D\n    B -.-&gt; N\n    \n    %% Forçar estilo de alerta no título\n    style T fill:#C00000,color:#fff\nEm contrapartida, manuais modernos de análise de dados aplicados à Psicologia (Neth, 2023; Wickham et al., 2023) defendem que o aprendizado de linguagens baseadas em scripts permite automatizar o saneamento de dados e garante um fluxo reprodutível desde a importação até o relatório final.",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Fundamentos da linguagem R para Psicologia</span>"
+    ]
+  },
+  {
+    "objectID": "01-tidyverse.html#as-armadilhas-do-fluxo-de-trabalho-tradicional-point-and-click",
+    "href": "01-tidyverse.html#as-armadilhas-do-fluxo-de-trabalho-tradicional-point-and-click",
+    "title": "Fundamentos da linguagem R para Psicologia",
+    "section": "",
+    "text": "Manipulação irreversível: Ao alterar diretamente dados em planilhas (como apagar uma linha de um participante atípico no Excel ou SPSS), o dado original é sobrescrito sem que fique registrado o critério exato ou a data da modificação.\nErro humano na transcrição (copy-paste): Mover manualmente médias, desvios-padrão, p-valores e coeficientes das janelas de saída estatística para o processador de texto (Word) gera taxas elevadas de erros de digitação nos manuscritos submetidos.\nOpacidade de critérios: Meses após a coleta, o próprio autor frequentemente esquece quais itens foram invertidos, como os dados ausentes (missing data) foram tratados ou quais filtros de exclusão foram aplicados.",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Fundamentos da linguagem R para Psicologia</span>"
+    ]
+  },
+  {
+    "objectID": "01-tidyverse.html#o-que-é-o-quarto",
+    "href": "01-tidyverse.html#o-que-é-o-quarto",
+    "title": "Fundamentos da linguagem R para Psicologia",
+    "section": "O que é o Quarto?",
+    "text": "O que é o Quarto?\nO Quarto é o sistema de publicação científica de última geração desenvolvido pela POSIT (mesma criadora do RStudio). Ele permite integrar escrita do texto (Markdown), blocos de código executável (R, Python ou Julia) e gerar documentos finais elegantes nos formatos PDF, Word (.docx), HTML ou apresentações de slides (Quarto Documentation Team, 2026).\nAo utilizar o Quarto em um projeto de pesquisa em Psicologia, as tabelas, os gráficos e os valores \\(p\\) presentes no texto são atualizados automaticamente sempre que o banco de dados é modificado ou corrigido.",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Fundamentos da linguagem R para Psicologia</span>"
+    ]
+  },
+  {
+    "objectID": "01-tidyverse.html#arquitetura-de-funcionamento-do-quarto",
+    "href": "01-tidyverse.html#arquitetura-de-funcionamento-do-quarto",
+    "title": "Fundamentos da linguagem R para Psicologia",
+    "section": "Arquitetura de funcionamento do Quarto",
+    "text": "Arquitetura de funcionamento do Quarto\nComo detalhado por Wickham et al. (2023) e Quarto Documentation Team (2026), o Quarto é um sistema de publicação multilinguagem de última geração. Ao clicar no botão Render no RStudio, um pipeline de compilação em duas etapas é acionado:\n\nO knitr executa todos os blocos de código R (chunks), calcula os resultados estatísticos, gera gráficos e transforma o arquivo .qmd em um documento intermediário de Markdown puro (.md).\nO Pandoc converte o arquivo .md intermediário para o formato de publicação final escolhido (HTML, PDF, Word, ePub ou Slides).",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Fundamentos da linguagem R para Psicologia</span>"
+    ]
+  },
+  {
+    "objectID": "01-tidyverse.html#onde-ocorrem-os-erros-mais-comuns",
+    "href": "01-tidyverse.html#onde-ocorrem-os-erros-mais-comuns",
+    "title": "Fundamentos da linguagem R para Psicologia",
+    "section": "Onde ocorrem os erros mais comuns?",
+    "text": "Onde ocorrem os erros mais comuns?\nEm bancos de dados brutos originados de plataformas de coleta (ex.: Google Forms ou Qualtrics), é frequente encontrar violações dos princípios tidy:\n\nCélulas mescladas ou notas de cabeçalho: Dificultam a leitura automatizada pelo R.\nVariáveis codificadas nos nomes das colunas: Exemplo de tabela com colunas chamadas Pre_Teste e Pos_Teste, em vez de uma coluna Tempo e outra coluna Escore.\nMúltiplas informações em uma só célula: Exemplo de registrar “Feminino / 25 anos” na mesma coluna.",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Fundamentos da linguagem R para Psicologia</span>"
+    ]
+  },
+  {
+    "objectID": "01-tidyverse.html#filtrando-e-selecionando-variáveis",
+    "href": "01-tidyverse.html#filtrando-e-selecionando-variáveis",
+    "title": "Fundamentos da linguagem R para Psicologia",
+    "section": "Filtrando e selecionando variáveis",
+    "text": "Filtrando e selecionando variáveis\nImagine que precisamos analisar apenas as participantes do gênero Feminino e queremos focar exclusivamente nas variáveis de idade e estresse.\n\nbanco_filtrado &lt;- banco_psico |&gt; \n  filter(genero == \"Feminino\") |&gt; \n  select(id, idade, estresse_t1)\n\nbanco_filtrado\n\n# A tibble: 3 × 3\n     id idade estresse_t1\n  &lt;int&gt; &lt;dbl&gt;       &lt;dbl&gt;\n1     1    19          24\n2     3    35          28\n3     6    50          19",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Fundamentos da linguagem R para Psicologia</span>"
+    ]
+  },
+  {
+    "objectID": "01-tidyverse.html#criando-novas-variáveis-com-mutate",
+    "href": "01-tidyverse.html#criando-novas-variáveis-com-mutate",
+    "title": "Fundamentos da linguagem R para Psicologia",
+    "section": "Criando novas variáveis com mutate()",
+    "text": "Criando novas variáveis com mutate()\nEm psicologia, frequentemente padronizamos escores ou criamos categorias (ex: faixas etárias). Vamos usar o mutate() combinado com case_when() para categorizar os participantes pela idade.\n\nbanco_mutado &lt;- banco_psico |&gt; \n  mutate(\n    faixa_etaria = case_when(\n      idade &lt; 25 ~ \"Jovem Adulto\",\n      idade &gt;= 25 & idade &lt; 40 ~ \"Adulto\",\n      idade &gt;= 40 ~ \"Adulto Maduro\"\n    ),\n    # Transformando em fator imediatamente\n    faixa_etaria = factor(faixa_etaria)\n  )\n\nbanco_mutado |&gt; select(id, idade, faixa_etaria)\n\n# A tibble: 6 × 3\n     id idade faixa_etaria \n  &lt;int&gt; &lt;dbl&gt; &lt;fct&gt;        \n1     1    19 Jovem Adulto \n2     2    22 Jovem Adulto \n3     3    35 Adulto       \n4     4    41 Adulto Maduro\n5     5    28 Adulto       \n6     6    50 Adulto Maduro",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Fundamentos da linguagem R para Psicologia</span>"
+    ]
+  },
+  {
+    "objectID": "01-tidyverse.html#escrita-no-texto-via-código-inline",
+    "href": "01-tidyverse.html#escrita-no-texto-via-código-inline",
+    "title": "Fundamentos da linguagem R para Psicologia",
+    "section": "Escrita no texto via código inline",
+    "text": "Escrita no texto via código inline\nExtraindo os dados diretamente da nossa tabela para o texto acadêmico utilizando o pipe nativo para isolar o valor exato:\n\nOs resultados preliminares indicam que o grupo que recebeu a Intervenção apresentou uma média de estresse de `{r} round(m_intervencao, 2)`, enquanto o grupo de Controle apresentou uma média de `{r} round(m_controle, 2)`.",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Fundamentos da linguagem R para Psicologia</span>"
+    ]
+  },
+  {
+    "objectID": "02-apa.html",
+    "href": "02-apa.html",
+    "title": "Organização do manuscrito estilo APA em Quarto",
+    "section": "",
+    "text": "Configuração do ambiente e fluxo de trabalho\nA reprodutibilidade na pesquisa psicológica exige que o texto acadêmico, os dados brutos e os códigos estatísticos coexistam em um único ecossistema seguro. Este módulo fornece um guia passo a passo para configurar o Quarto utilizando a extensão apaquarto (Schneider, 2024), garantindo que seu manuscrito seja exportado nativamente nos padrões da American Psychological Association (2020).",
+    "crumbs": [
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Organização do manuscrito estilo APA em Quarto</span>"
+    ]
+  },
+  {
+    "objectID": "02-apa.html#instalação-de-requisitos-do-sistema",
+    "href": "02-apa.html#instalação-de-requisitos-do-sistema",
+    "title": "Organização do manuscrito estilo APA em Quarto",
+    "section": "Instalação de requisitos do sistema",
+    "text": "Instalação de requisitos do sistema\nAntes de iniciar a escrita, é necessário preparar o ambiente local instalando a ferramenta de renderização de PDFs (\\(\\LaTeX\\)) e baixar o template da APA no diretório do seu projeto.\n\n# 1. Instalar o TinyTeX (essencial para compilar PDFs acadêmicos de forma leve)\ninstall.packages(\"tinytex\")\ntinytex::install_tinytex()\n\n# 2. Adicionar a extensão oficial da APA 7ª edição ao seu projeto atual\ninstall.packages(\"quarto\")\nquarto::quarto_add_extension(\"wjschne/apaquarto\")\n\nAlternativamente, é possível instalar pelo terminal usando o seguinte comando.\n\nquarto use template wjschne/apaquarto",
+    "crumbs": [
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Organização do manuscrito estilo APA em Quarto</span>"
+    ]
+  },
+  {
+    "objectID": "02-apa.html#pacotes-em-r-essenciais-para-psicologia",
+    "href": "02-apa.html#pacotes-em-r-essenciais-para-psicologia",
+    "title": "Organização do manuscrito estilo APA em Quarto",
+    "section": "Pacotes em R Essenciais para Psicologia",
+    "text": "Pacotes em R Essenciais para Psicologia\nCom a estrutura do documento instalada, precisamos dos pacotes que automatizarão a manipulação psicométrica e a formatação das tabelas estatísticas. Abra o seu console do R e execute:\n\n# Instalação dos pacotes do CRAN\ninstall.packages(c(\"tidyverse\", \"flextable\", \"ftExtra\", \"remotes\"))\n\n# Instalação do pacote utilitário para tabelas da APA 7 via GitHub\nremotes::install_github(\"wjschne/apa7\")\n\nO pacote tidyverse será utilizado para a limpeza de dados e cálculo de escores de subescalas, enquanto o flextable e o apa7 ajudaram a construir tabelas com as linhas horizontais exigidas pela APA (mais a frente veremos alternativas usando o apaTables e o papaja.",
+    "crumbs": [
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Organização do manuscrito estilo APA em Quarto</span>"
+    ]
+  },
+  {
+    "objectID": "02-apa.html#estrutura-de-um-documento-acadêmico-.qmd",
+    "href": "02-apa.html#estrutura-de-um-documento-acadêmico-.qmd",
+    "title": "Organização do manuscrito estilo APA em Quarto",
+    "section": "Estrutura de um Documento Acadêmico (.qmd)",
+    "text": "Estrutura de um Documento Acadêmico (.qmd)\nTodo documento Quarto formatado para a APA inicia-se com um cabeçalho YAML delimitado por três traços (---). É nele que metadados complexos (como afiliações múltiplas e autores correspondentes) são declarados.\nAbaixo está o esqueleto padrão para o seu arquivo manuscrito.qmd:\n\n---\ntitle: \"Efeito da fadiga cognitiva na tomada de decisão\"\nshorttitle: \"Fadiga cognitiva e decisão\"\nauthor:\n  - name: Aluno de pós-graduação\n    corresponding: true\n    orcid: 0000-0000-0000-0000\n    email: pesquisador@universidade.br\n    affiliations:\n      - name: Universidade Pública Gratuita e de Qualidade\n        department: Núcleo de Pesquisa em Psicologia\nabstract: |\n  O resumo deve conter um parágrafo único, sem recuo, sintetizando os objetivos, \n  método (incluindo características dos participantes), resultados principais e \n  conclusões do estudo. Geralmente varia entre 150 e 250 palavras.\nkeywords: [fadiga cognitiva, tomada de decisão, psicologia experimental]\nlang: pt-BR\nformat:\n  apaquarto-pdf:\n    keep-tex: false\n  apaquarto-docx: default\nbibliography: referencias.bib\n---\n\n## Introdução\n\nO texto da sua introdução começa diretamente aqui. Na norma APA, o título da introdução não deve receber o cabeçalho \"Introdução\", pois presume-se que a seção inicial cumpre esse papel. Citações podem ser feitas nativamente usando colchetes e a chave do BibTeX [@harris2020].\n\n## Método\n\nEsta seção detalha rigorosamente como a pesquisa foi conduzida, subdividida em subcabeçalhos táteis.\n\n### Participantes\n\nDescreva a amostra, critérios de inclusão/exclusão e dados demográficos fundamentais.\n\n### Materiais e Procedimentos\n\nApresente os inventários psicométricos, tarefas experimentais e o passo a passo ético coletado.\n\n## Resultados\n\nOs resultados estatísticos devem ser apresentados de forma clara e objetiva. Tabelas dinâmicas podem ser geradas diretamente através de blocos de código (*code chunks*).\n\n```{r}\n#| echo: false\n#| message: false\n\nlibrary(flextable)\nlibrary(apa7)\n\n# Dados fictícios para demonstração\ndados_exemplo &lt;- data.frame(\n  Condicao = c(\"Controle\", \"Experimental\"),\n  Media = c(7.42, 5.18),\n  Desvio_Padrao = c(1.12, 1.45)\n)\n```\n\n## Renderizando a tabela sob as regras da APA\n\n```{r}\n#| label: tbl-descritiva\n#| tbl-cap: \"Estatisticas Descritivas dos Grupos Amostrais\"\napa_flextable(dados_exemplo)\n```\n\nComo demonstrado na @tbl-descritiva, observou-se uma variação latente entre as condições avaliadas.\n\n## Discussão\n\nInterprete os achados à luz das hipóteses teóricas levantadas na introdução, limitações e direções futuras.\n\n## Referências",
+    "crumbs": [
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Organização do manuscrito estilo APA em Quarto</span>"
+    ]
+  },
+  {
+    "objectID": "02-apa.html#renderização-e-compilação",
+    "href": "02-apa.html#renderização-e-compilação",
+    "title": "Organização do manuscrito estilo APA em Quarto",
+    "section": "Renderização e compilação",
+    "text": "Renderização e compilação\nPara transformar o seu código escrito em um documento formatado e pronto para submissão, você pode clicar no botão Render na barra superior do RStudio. Alternativamente, no terminal, é possível compilar usando\n\nquarto render manuscrito.qmd --to apaquarto-pdf\n\nO resultado, em pdf, deve ser o seguinte.",
+    "crumbs": [
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Organização do manuscrito estilo APA em Quarto</span>"
+    ]
+  },
+  {
+    "objectID": "03-visualizacao.html",
+    "href": "03-visualizacao.html",
+    "title": "Visualização de dados",
+    "section": "",
+    "text": "Introdução à gramática de gráficos (ggplot2)\nO pacote ggplot2 é fundamentado na gramática de gráficos (Wilkinson, 2005), uma abordagem teórica que decompõe um gráfico em componentes independentes e estruturados em camadas. Compreender essa gramática permite criar qualquer tipo de visualização combinando os seguintes blocos de construção:\n\nDados (Data): O conjunto de dados bruto que você deseja visualizar. No ggplot2, este dado idealmente deve estar no formato tidy (organizado), onde cada linha representa uma observação e cada coluna uma variável.\nMapeamento Estético (Aesthetics – aes): Define como as variáveis dos seus dados são mapeadas para propriedades visuais do gráfico. Exemplos incluem o eixo horizontal (x), eixo vertical (y), cor do preenchimento (fill), cor da linha (color), formato do ponto (shape) e tamanho (size).\nGeometria (Geometries – geom): Especifica a forma física que os dados assumirão na tela. É a camada que define o tipo de gráfico. Exemplos: geom_point() para dispersão, geom_bar() ou geom_col() para barras, e geom_boxplot() para diagramas de caixa.\nEstatísticas (Statistical Transformations – stat): Transformações computadas sobre os dados antes da plotagem. Por exemplo, calcular a média e o intervalo de confiança ou ajustar uma reta de regressão linear (geom_smooth(method = \"lm\")).\nEscalas (Scales): Controlam a correspondência entre os dados e os atributos estéticos. Elas determinam os limites dos eixos, os intervalos das quebras numéricas (scale_y_continuous()) e os mapeamentos de cores (transformar categorias em tons de cinza ou paletas acessíveis).\nSistemas de Coordenadas (Coordinates): Mapeiam a posição dos objetos no plano do gráfico. O padrão é o sistema Cartesiano (coord_cartesian()), mas pode ser alterado para coordenadas polares ou inversões de eixos (coord_flip()).\nFacetas (Facets): Permitem dividir os dados em múltiplos subgráficos (painéis) com base em variáveis categóricas utilizando facet_wrap() ou facet_grid().\nTemas (Themes): Controlam os elementos não-estatísticos e puramente estéticos do gráfico, como fontes, cor de fundo, presença ou ausência de linhas de grade e posicionamento da legenda.\n\n\n\nPrincípios visuais da APA 7\nA apa2020publication possui regras específicas para figuras e gráficos. Tais gráficos devem ser o mais limpas e informativas possível. Os principais requisitos incluem:\n\nAusência de linhas de grade: Grades de fundo (gridlines) verticais ou horizontais devem ser removidas.\nContraste nítido: Utilizar escala de cinza ou paletas de cores acessíveis e de alto contraste.\nTipografia consistente: Fontes sem serifa (como Arial) ou com serifa (como Times New Roman), variando de 8pt a 14pt.\nRótulos claros: Eixos devem conter o nome da variável e, se aplicável, sua unidade de medida ou escala.\n\n\nlibrary(tidyverse)\nlibrary(papaja)\n\n\n\nGráfico de dispersão (correlação)\nO gráfico de dispersão (scatterplot) é ideal para visualizar a relação entre duas variáveis contínuas. Vamos cruzar o nível de Estresse Percebido com as horas de Sono Autorrelatadas.\nPara deixar o gráfico no padrão APA, usamos o theme_classic() como base e ajustamos as fontes.\n\n# Dados simulados dados de 40 participantes\nset.seed(42)\ndados_sono &lt;- tibble(\n  sono_horas = runif(40, 4, 9),\n  estresse = 40 - (sono_horas * 3.5) + rnorm(40, 0, 4)\n)\n\n# Construindo o gráfico com ggplot2 e pipe nativo\ndados_sono |&gt; \n  ggplot(aes(x = sono_horas, y = estresse)) +\n  geom_point(size = 2, alpha = 0.7) +\n  geom_smooth(method = \"lm\", color = \"black\", se = TRUE, linetype = \"dashed\") +\n  labs(\n    x = \"Horas de Sono por Noite\",\n    y = \"Escore de Estresse Percebido (0-50)\"\n  ) +\n  theme_classic(base_size = 12) +\n  theme(\n    text = element_text(family = \"sans\"),\n    axis.text = element_text(color = \"black\")\n  )\n\n\n\n\n\n\n\nFigura 7.1: Relação entre horas de sono e o nível de estresse percebido.\n\n\n\n\n\n\n\nGráfico de barras com intervalos de confiança (comparação de grupos)\nMostrar apenas as barras de média sem indicar a variabilidade dos dados é uma prática ruim na ciência. Sempre precisamos incluir barras de erro (representando o Desvio-Padrão, Erro-Padrão ou Intervalo de Confiança de 95%).\nNo exemplo abaixo, usamos o dplyr para calcular a média e o erro-padrão e passamos o resultado diretamente para o ggplot2 usando o pipe nativo.\n\n# Simulando dados experimentais\ndados_experimento &lt;- tibble(\n  grupo = rep(c(\"Controle\", \"Intervenção Breve\", \"Intervenção Avançada\"), each = 20),\n  ansiedade = c(rnorm(20, 24, 5), rnorm(20, 18, 4), rnorm(20, 13, 4))\n)\n\n# Fluxo unificado: Processamento -&gt; Sumarização -&gt; Gráfico\ndados_experimento |&gt; \n  group_by(grupo) |&gt; \n  summarise(\n    media = mean(ansiedade),\n    sd_ans = sd(ansiedade),\n    n_part = n(),\n    erro_padrao = sd_ans / sqrt(n_part)\n  ) |&gt; \n  ggplot(aes(x = grupo, y = media)) +\n  # fill = grupo gera barras cinzas/padrão, color = \"black\" cria a borda\n  geom_bar(stat = \"identity\", fill = \"grey80\", color = \"black\", width = 0.6) +\n  geom_errorbar(\n    aes(ymin = media - erro_padrao, ymax = media + erro_padrao),\n    width = 0.15, \n    color = \"black\"\n  ) +\n  labs(\n    x = \"Grupo Experimental\",\n    y = \"Média de Sintomas de Ansiedade\"\n  ) +\n  scale_y_continuous(expand = expansion(mult = c(0, 0.1))) + # Remove espaço sob a barra\n  theme_classic(base_size = 12) +\n  theme(\n    text = element_text(family = \"sans\"),\n    axis.text = element_text(color = \"black\")\n  )\n\n\n\n\n\n\n\nFigura 8.1: Níveis médios de ansiedade por grupo experimental. Barras de erro representam ±1 Erro-Padrão da Média.\n\n\n\n\n\n\n\nExercícios\nAbra o seu arquivo .qmd e complete os seguintes desafios visuais:\n\nCrie uma nova tibble chamada dados_clinicos contendo duas variáveis contínuas: Depressao e Ansiedade (simule valores para 30 participantes).\nGere um gráfico de dispersão relacionando essas duas variáveis. Adicione a linha de tendência linear utilizando geom_smooth(method = \"lm\").\nAplique o theme_classic() e modifique os rótulos dos eixos de forma que fiquem elegantes e acadêmicos.\nRenderize o seu documento. No Quarto, note como as figuras são automaticamente numeradas e integradas ao texto se você usar referências cruzadas como README @fig-dispersao.\n\n\n\n\n\nWilkinson, L. (2005). The Grammar of Graphics (2nd ed.). Springer-Verlag.",
+    "crumbs": [
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Visualização de dados</span>"
+    ]
+  },
+  {
+    "objectID": "04-inferencia.html",
+    "href": "04-inferencia.html",
+    "title": "Inferência estatística e tabelas automatizadas",
+    "section": "",
+    "text": "Teste \\(t\\) de Student para amostras independentes\nTradicionalmente, os resultados de testes estatísticos no R são exibidos em blocos de texto difíceis de manipular no console. No R moderno, utilizamos o pacote broom para transformar saídas de modelos estatísticos complexos (como objetos lm ou t.test) em tibbles limpas e organizadas.\nPara a geração automática de matrizes de correlação e tabelas de regressão no formato oficial da APA, utilizaremos o pacote apaTables (Stanley & Spence, 2018).\nVamos testar a hipótese de que participantes de um grupo experimental de meditação apresentam menores níveis de cortisol (estresse biológico) em comparação ao grupo de controle.\n# Simulando os dados de 30 participantes\nset.seed(123)\ndados_cortisol &lt;- tibble(\n  grupo = rep(c(\"Controle\", \"Meditação\"), each = 15),\n  cortisol = c(rnorm(15, 18, 4), rnorm(15, 14, 3.5))\n)\n\n# Executando o teste t e transformando o resultado em uma tibble com broom\nresultado_t &lt;- t.test(cortisol ~ grupo, data = dados_cortisol, var.equal = TRUE) |&gt; \n  tidy()\n\nresultado_t\n\n# A tibble: 1 × 10\n  estimate estimate1 estimate2 statistic  p.value parameter conf.low conf.high\n     &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt;\n1     5.47      18.6      13.1      4.15 0.000279        28     2.77      8.17\n# ℹ 2 more variables: method &lt;chr&gt;, alternative &lt;chr&gt;",
+    "crumbs": [
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Inferência estatística e tabelas automatizadas</span>"
+    ]
+  },
+  {
+    "objectID": "04-inferencia.html#extração-de-resultados-para-texto-dinâmico",
+    "href": "04-inferencia.html#extração-de-resultados-para-texto-dinâmico",
+    "title": "Inferência estatística e tabelas automatizadas",
+    "section": "Extração de resultados para texto dinâmico",
+    "text": "Extração de resultados para texto dinâmico\nUsando o pipe nativo e a tibble gerada pelo broom, podemos extrair os valores para redigir o texto acadêmico dinamicamente sem risco de digitação incorreta:\nOs resultados indicaram uma diferença estatisticamente significativa entre os grupos, t(28) = 4.15, p = 0. O grupo que praticou meditação apresentou níveis significativamente menores de cortisol.",
+    "crumbs": [
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Inferência estatística e tabelas automatizadas</span>"
+    ]
+  },
+  {
+    "objectID": "04-inferencia.html#matriz-de-correlação-apa",
+    "href": "04-inferencia.html#matriz-de-correlação-apa",
+    "title": "Inferência estatística e tabelas automatizadas",
+    "section": "Matriz de Correlação APA",
+    "text": "Matriz de Correlação APA\nA função apa.cor.table() cria uma tabela clássica da APA com médias, desvios-padrão e correlações indicadas por asteriscos para significância estatística.\n\n# Simulando variáveis psicológicas contínuas\ndados_psicometria &lt;- tibble(\n  Autoestima = rnorm(50, 25, 5),\n  Ansiedade = 40 - (Autoestima * 0.6) + rnorm(50, 0, 3),\n  Satisfacao_Vida = (Autoestima * 0.8) + rnorm(50, 0, 4)\n)\n\n# Gerando a tabela APA (ela salva um arquivo .doc no seu diretório de trabalho)\napa.cor.table(dados_psicometria, \n              filename = \"Tabela1_Correlacoes_APA.doc\", \n              show.conf.interval = FALSE)\n\nThe ability to suppress reporting of reporting confidence intervals has been deprecated in this version.\nThe function argument show.conf.interval will be removed in a later version.\n\n\n\n\nMeans, standard deviations, and correlations with confidence intervals\n \n\n  Variable           M     SD   1            2           \n  1. Autoestima      24.64 4.86                          \n                                                         \n  2. Ansiedade       25.21 4.35 -.73**                   \n                                [-.84, -.56]             \n                                                         \n  3. Satisfacao_Vida 19.53 5.49 .73**        -.50**      \n                                [.56, .84]   [-.68, -.25]\n                                                         \n\nNote. M and SD are used to represent mean and standard deviation, respectively.\nValues in square brackets indicate the 95% confidence interval.\nThe confidence interval is a plausible range of population correlations \nthat could have caused the sample correlation (Cumming, 2014).\n * indicates p &lt; .05. ** indicates p &lt; .01.",
+    "crumbs": [
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Inferência estatística e tabelas automatizadas</span>"
+    ]
+  },
+  {
+    "objectID": "04-inferencia.html#tabela-de-regressão-linear-múltipla",
+    "href": "04-inferencia.html#tabela-de-regressão-linear-múltipla",
+    "title": "Inferência estatística e tabelas automatizadas",
+    "section": "Tabela de regressão linear múltipla",
+    "text": "Tabela de regressão linear múltipla\nDa mesma forma, podemos gerar tabelas completas de modelos de regressão, incluindo coeficientes não-padronizados (B), padronizados (\\(\\beta\\)), intervalos de confiança e o \\(R^2\\) do modelo.\n\n# Ajustando um modelo de regressão múltipla\nmodelo_regressao &lt;- lm(Satisfacao_Vida ~ Autoestima + Ansiedade, data = dados_psicometria)\n\n# Gerando a tabela de regressão padronizada da APA\napa.reg.table(modelo_regressao, \n              filename = \"Tabela2_Regressao_APA.doc\")\n\n\n\nRegression results using Satisfacao_Vida as the criterion\n \n\n   Predictor      b        b_95%_CI beta   beta_95%_CI sr2  sr2_95%_CI      r\n (Intercept)  -4.01 [-20.29, 12.26]                                          \n  Autoestima 0.87**    [0.54, 1.20] 0.77  [0.48, 1.07] .28  [.09, .47]  .73**\n   Ansiedade   0.08   [-0.29, 0.45] 0.06 [-0.23, 0.36] .00 [-.01, .02] -.50**\n                                                                             \n                                                                             \n                                                                             \n             Fit\n                \n                \n                \n     R2 = .529**\n 95% CI[.31,.65]\n                \n\nNote. A significant b-weight indicates the beta-weight and semi-partial correlation are also significant.\nb represents unstandardized regression weights. beta indicates the standardized regression weights. \nsr2 represents the semi-partial correlation squared. r represents the zero-order correlation.\nSquare brackets are used to enclose the lower and upper limits of a confidence interval.\n* indicates p &lt; .05. ** indicates p &lt; .01.\n \n\n\nNota: O pacote apaTables exportará automaticamente os arquivos organizados com as linhas e fontes corretas diretamente no seu computador para que você possa incorporá-los ao seu relatório final.",
+    "crumbs": [
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Inferência estatística e tabelas automatizadas</span>"
+    ]
+  },
+  {
+    "objectID": "04-inferencia.html#flexibilidade-com-tibbles-genéricos",
+    "href": "04-inferencia.html#flexibilidade-com-tibbles-genéricos",
+    "title": "Inferência estatística e tabelas automatizadas",
+    "section": "Flexibilidade com tibbles genéricos",
+    "text": "Flexibilidade com tibbles genéricos\nVocê também pode utilizar o apa_table() para produzir estatísticas descritivas personalizadas a partir de qualquer tibble previamente organizado:\n\n\n\nTabela 9.2: (#tab:tbl-descritivas)\n\n\ndados_descritivos &lt;- dados_cortisol |&gt; \n  group_by(grupo) |&gt; \n  summarise(\n    N     = n(),\n    Media = mean(cortisol),\n    DP    = sd(cortisol)\n  )\n\napa_table(\n  dados_descritivos,\n  label     = NULL,\n  caption   = NULL,\n  col.names = c(\"Grupo de Estudo\", \"N\", \"Média ($M$)\", \"Desvio-Padrão ($SD$)\"),\n  align     = c(\"l\", \"c\", \"c\", \"c\")\n)\n\n\n\nGrupo de Estudo\nN\nMédia (\\(M\\))\nDesvio-Padrão (\\(SD\\))\n\n\n\n\nControle\n15\n18.61\n3.38\n\n\nMeditação\n15\n13.14\n3.82",
+    "crumbs": [
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Inferência estatística e tabelas automatizadas</span>"
+    ]
+  },
+  {
+    "objectID": "05-citacoes.html",
+    "href": "05-citacoes.html",
+    "title": "Gerenciamento de citações",
+    "section": "",
+    "text": "Citação no Quarto\nEscrever artigos em Psicologia exige precisão rigorosa no crédito às fontes bibliográficas. No Quarto, em vez de digitar as citações manualmente e correr o risco de esquecer de incluir algum autor na lista final, nós separamos o conteúdo em duas partes:\nNo cabeçalho YAML deste documento, mapeamos o arquivo de referências usando a propriedade bibliography: referencias.bib e definimos as regras de estilo da APA usando um arquivo CSL com csl: ....",
+    "crumbs": [
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Gerenciamento de citações</span>"
+    ]
+  },
+  {
+    "objectID": "05-citacoes.html#citação-parentética",
+    "href": "05-citacoes.html#citação-parentética",
+    "title": "Gerenciamento de citações",
+    "section": "Citação parentética",
+    "text": "Citação parentética\nQuando a informação ou ideia é trazida e os autores são referenciados apenas ao final da sentença, colocamos colchetes antes do símbolo @.\n\nComo digitar no Quarto: A teoria da autoeficácia sugere que as crenças das pessoas em suas capacidades influenciam suas escolhas e persistência [@bandura1977].\nResultado Renderizado: A teoria da autoeficácia sugere que as crenças das pessoas em suas capacidades influenciam suas escolhas e persistência (Bandura, 1977).\n\nSe precisar citar múltiplos trabalhos juntos, separe as chaves por ponto e vírgula: [@bandura1977; @harris2020].",
+    "crumbs": [
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Gerenciamento de citações</span>"
+    ]
+  },
+  {
+    "objectID": "05-citacoes.html#citação-narrativa",
+    "href": "05-citacoes.html#citação-narrativa",
+    "title": "Gerenciamento de citações",
+    "section": "Citação narrativa",
+    "text": "Citação narrativa\nQuando você quer que o nome do autor faça parte do fluxo de leitura do seu texto, basta omitir os colchetes. O Quarto deixará apenas o ano entre parênteses de forma automática.\n\nComo digitar no Quarto: De acordo com @bandura1977, os processos cognitivos operam como determinantes cruciais do comportamento humano. O ecossistema modernizado do R mudou a forma como psicólogos analisam dados experimentais [@harris2020].\nResultado Renderizado: De acordo com Bandura (1977), os processos cognitivos operam como determinantes cruciais do comportamento humano. O ecossistema modernizado do R mudou a forma como psicólogos analisam dados experimentais (Harris et al., 2020).",
+    "crumbs": [
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Gerenciamento de citações</span>"
+    ]
+  },
+  {
+    "objectID": "05-citacoes.html#adicionando-páginas-específicas-citações-diretas",
+    "href": "05-citacoes.html#adicionando-páginas-específicas-citações-diretas",
+    "title": "Gerenciamento de citações",
+    "section": "Adicionando páginas específicas (citações diretas)",
+    "text": "Adicionando páginas específicas (citações diretas)\nPara citações textuais (diretas), a APA exige o número da página. Você pode adicionar informações extras logo após a chave de citação dentro dos colchetes.\n\nComo digitar no Quarto: [@bandura1977, p. 191]\nResultado Renderizado: (Bandura, 1977, p. 191)",
+    "crumbs": [
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Gerenciamento de citações</span>"
+    ]
+  },
+  {
+    "objectID": "referencias.html",
+    "href": "referencias.html",
+    "title": "Referências",
+    "section": "",
+    "text": "American Psychological Association. (2020). Publication manual of\nthe american psychological association (7th ed.). American\nPsychological Association. https://doi.org/10.1037/0000165-000\n\n\nAust, F., & Barth, M. (2026). papaja: Prepare reproducible\nAPA journal articles with R Markdown. https://doi.org/10.32614/CRAN.package.papaja\n\n\nBandura, A. (1977). Self-efficacy: Toward a unifying theory of\nbehavioral change. Psychological Review, 84(2),\n191–215.\n\n\nHarris, D., Cumberland, S., & Jones, R. (2020). R for\npsychological science. Academic Press.\n\n\nKnuth, D. E. (1984). Literate programming. The Computer\nJournal, 27(2), 97–111. https://doi.org/10.1093/comjnl/27.2.97\n\n\nNeth, H. (2023). Data science for psychology and behavioral sciences\n(ds4psy). University of Konstanz. https://bookdown.org/hneth/ds4psy/\n\n\nOpen Science Collaboration. (2015). Estimating the reproducibility of\npsychological science. Science, 349(6251), aac4716. https://doi.org/10.1126/science.aac4716\n\n\nQuarto Documentation Team. (2026). Quarto user guide. Posit\nSoftware, PBC. https://quarto.org\n\n\nSchneider, W. J. (2024). Apaquarto: A quarto extension for creating\nAPA 7th edition documents. https://github.com/wjschne/apaquarto\n\n\nStanley, D. J., & Spence, J. R. (2018). Reproducible tables in\npsychology using the apaTables package. Advances in Methods and\nPractices in Psychological Science, 1(3), 415–431. https://doi.org/10.1177/2515245918773743\n\n\nWickham, H., Çetinkaya-Rundel, M., & Grolemund, G. (2023). R for\ndata science: Import, tidy, transform, visualize, and model data\n(2nd ed.). O’Reilly Media. https://r4ds.hadley.nz/\n\n\nWilkinson, L. (2005). The grammar of graphics (2nd ed.).\nSpringer-Verlag.",
+    "crumbs": [
+      "Referências"
+    ]
+  }
+]
